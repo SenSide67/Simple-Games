@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ObstacleMoving : MonoBehaviour
 {
-    [SerializeField] private float speed = 5f;
-    private PlayerController playerController;
+     [SerializeField] private float speed = 3.5f;
+     private PlayerController playerController;
 
      void Start()
      {
@@ -17,6 +17,10 @@ public class ObstacleMoving : MonoBehaviour
         if(playerController.isGameActive)
         {
             transform.Translate(Vector3.left * Time.deltaTime * speed);
-        }             
+        }     
+        if(transform.position.x <= -9)
+        {
+            Destroy(gameObject);
+        }
     }
 }

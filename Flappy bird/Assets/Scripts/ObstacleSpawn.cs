@@ -6,8 +6,12 @@ public class ObstacleSpawn : MonoBehaviour
 {
     [SerializeField] private GameObject[] obstacleSpawnPrefab = new GameObject[5];
     private Vector3 spawnPosition = new Vector3(10, -0.5996328f, 0.020725f);
+    private PlayerController playerController;
+
     void Start()
     {
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+    
         InvokeRepeating("SpawnObstacle", 2f, 1.5f);
     }
 
@@ -19,6 +23,7 @@ public class ObstacleSpawn : MonoBehaviour
     
     private void SpawnObstacle()
     {
-        Instantiate(obstacleSpawnPrefab[Random.Range(0, 4)], spawnPosition, Quaternion.Euler(0, 0, 0));
+      if(playerController.isGameActive)
+            Instantiate(obstacleSpawnPrefab[Random.Range(0, 4)], spawnPosition, Quaternion.Euler(0, 0, 0));
     }
 }

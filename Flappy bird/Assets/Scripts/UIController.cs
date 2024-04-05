@@ -7,6 +7,7 @@ public class UIController : MonoBehaviour
 {
     private PlayerController playerController;
     [SerializeField] private TextMeshProUGUI gameOverText;
+    [SerializeField] private TextMeshProUGUI scoreText;
     void Start()
     {
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
@@ -19,5 +20,6 @@ public class UIController : MonoBehaviour
         {
             gameOverText.gameObject.SetActive(true);
         }
+        scoreText.text = "Score: " + playerController.score;
     }
 }

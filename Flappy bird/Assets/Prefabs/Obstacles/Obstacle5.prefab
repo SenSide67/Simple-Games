@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6227207012023213322}
   - component: {fileID: 4892457946140124005}
+  - component: {fileID: 3817060142288594746}
   m_Layer: 0
   m_Name: Obstacle5
-  m_TagString: Untagged
+  m_TagString: obstaclePassed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,6 +48,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+--- !u!65 &3817060142288594746
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51191028674925496}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1165123, y: 1.0326676, z: 1}
+  m_Center: {x: 0.44174385, y: 2.1070955, z: 0}
 --- !u!1 &7148817431181295784
 GameObject:
   m_ObjectHideFlags: 0
@@ -61,7 +75,7 @@ GameObject:
   - component: {fileID: 1715391927007452528}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -158,7 +172,7 @@ GameObject:
   - component: {fileID: 3433303931266067125}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
