@@ -8,15 +8,22 @@ public class BackgroundRepeating : MonoBehaviour
     private float speed = 3.5f;
     private float sizeOfOneSlide = 17.78f;
 
+    private PlayerController playerController;
+
     void Start()
     {
         startPosition = transform.position;
+
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
     void Update()
     {
-        transform.Translate(Vector3.left * speed * Time.deltaTime);
+        if (playerController.isGameActive)
+        {
+            transform.Translate(Vector3.left * speed * Time.deltaTime);
 
-      if (transform.position.x <= -sizeOfOneSlide) transform.position = startPosition;
+            if (transform.position.x <= -sizeOfOneSlide) transform.position = startPosition;
+        }     
     }
 }

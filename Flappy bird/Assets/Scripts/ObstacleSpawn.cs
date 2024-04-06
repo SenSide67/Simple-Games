@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObstacleSpawn : MonoBehaviour
 {
-    [SerializeField] private GameObject[] obstacleSpawnPrefab = new GameObject[5];
+    [SerializeField] private GameObject[] obstacleSpawnPrefab = new GameObject[7];
     private Vector3 spawnPosition = new Vector3(10, -0.5996328f, 0.020725f);
     private PlayerController playerController;
 
@@ -12,7 +12,7 @@ public class ObstacleSpawn : MonoBehaviour
     {
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
     
-        InvokeRepeating("SpawnObstacle", 2f, 1.5f);
+        InvokeRepeating("SpawnObstacle", 1.5f, 1.8f);
     }
 
     // Update is called once per frame

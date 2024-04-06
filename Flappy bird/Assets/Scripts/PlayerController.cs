@@ -9,13 +9,17 @@ public class PlayerController : MonoBehaviour
     public bool isGameActive = true;
     private Cooldown jumpCooldown;
     public int score;
-    
+    private Animator animator;
+    private AudioSource wingSound;
+ 
     void Start()
     {
-        Physics.gravity = new Vector3(0f, -5f, 0f);
         playerRb = GetComponent<Rigidbody>();
         jumpCooldown = GetComponent<Cooldown>();
+        wingSound = GetComponent<AudioSource>();
+        animator =GameObject.Find("yellowbird-downflap").GetComponent<Animator>();
         jumpCooldown.cooldownTime = 0.15f;
+        Physics.gravity = new Vector3(0f, -5f, 0f);
         score = 0;
     }
 
@@ -24,9 +28,17 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && isGameActive && jumpCooldown.canDoAction)
         {
-            Debug.Log("afa");
             playerRb.AddForce(Vector3.up * forcePower, ForceMode.Impulse);
             jumpCooldown.StartTimer();
+            wingSound.Play();
+        }
+
+        if (!isGameActive)
+        {
+            if (PlayerPrefs.GetInt("Score") < score)
+            {
+                SaveScore();
+            }
         }
     }
 
@@ -36,6 +48,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("obstacle"))
         {
             isGameActive = false;
+            animator.SetBool("isDead", true);
         }
 
         if (other.gameObject.CompareTag("obstaclePassed"))
@@ -47,6 +60,13 @@ public class PlayerController : MonoBehaviour
         {
             playerRb.constraints = RigidbodyConstraints.FreezePositionY;
             isGameActive = false;
+            animator.SetBool("isDead", true);
         }
+    }
+
+    private void SaveScore()
+    {     
+        PlayerPrefs.SetInt("Score", score);
+        PlayerPrefs.Save();
     }
 }
